@@ -6,6 +6,11 @@ const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 
+const pushDirectory = path.resolve(__dirname, "dist");
+const pushPath = path.join(pushDirectory, "card.html")
+
+const render = require("./lib/htmlRender")
+
 const ids = [];
 const teamList = [];
 
@@ -52,14 +57,15 @@ function makeManager() {
           type: "input",
           name: "managerID",
           message: "What's your managers ID?",
-          validate: (nameInput) => {
-            if (nameInput) {
-              return true;
-            } else {
-              console.log("Please enter a manager ID!");
-              return false;
+          validate: answer => {
+            const password = answer.match(
+              /^[0-9]+$/
+            );
+            if (password) {
+                return true;
             }
-          },
+            return "Please enter a number";
+        }
         },
         {
           type: "input",
@@ -78,14 +84,15 @@ function makeManager() {
           type: "input",
           name: "managerOfficeNumber",
           message: "What's your employees's officenumber?",
-          validate: (nameInput) => {
-            if (nameInput) {
-              return true;
-            } else {
-              console.log("Please enter a  officenumber!");
-              return false;
+          validate: answer => {
+            const password = answer.match(
+              /^[0-9]+$/
+            );
+            if (password) {
+                return true;
             }
-          },
+            return "Please enter a number";
+        }
         },
       ])
       .then((answer) => {
@@ -106,7 +113,7 @@ function makeManager() {
       .prompt([
         {
           type: "input",
-          name: "InternName",
+          name: "internName",
           message: "What's your interns name?",
           validate: (nameInput) => {
             if (nameInput) {
@@ -121,14 +128,15 @@ function makeManager() {
           type: "input",
           name: "internID",
           message: "What's your interns ID?",
-          validate: (nameInput) => {
-            if (nameInput) {
-              return true;
-            } else {
-              console.log("Please enter a intern ID!");
-              return false;
+          validate: answer => {
+            const password = answer.match(
+              /^[0-9]+$/
+            );
+            if (password) {
+                return true;
             }
-          },
+            return "Please enter a number";
+        }
         },
         {
           type: "input",
@@ -190,14 +198,15 @@ function makeManager() {
           type: "input",
           name: "engineerID",
           message: "What's your engineers ID?",
-          validate: (nameInput) => {
-            if (nameInput) {
-              return true;
-            } else {
-              console.log("Please enter a engineer ID!");
-              return false;
+          validate: answer => {
+            const password = answer.match(
+              /^[0-9]+$/
+            );
+            if (password) {
+                return true;
             }
-          },
+            return "Please enter a number";
+        }
         },
         {
           type: "input",
@@ -240,7 +249,10 @@ function makeManager() {
   }
 
   function makeTeam(){
-
+    if(!fs.existsSync(pushDirectory)){
+      fs.mkdirSync(pushDirectory)
+    }
+    fs.writeFileSync(pushPath, render(teamList), 'utf8');
   };
 
 buildTeam();
