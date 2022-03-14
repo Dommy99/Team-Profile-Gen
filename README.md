@@ -17,7 +17,7 @@ The html is generated using regex and data input from inquirer.
 
 - https://drive.google.com/file/d/1-ArXHEXjjBe2uhN_aGthdKL3pP8mAvAd/view
 
-![](/Develop/read-ex.JPG)
+![](/teamgendom.JPG)
 
 ## Contact Me
 
