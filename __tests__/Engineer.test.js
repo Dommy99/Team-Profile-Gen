@@ -1,7 +1,7 @@
-const Engineer = require("./Engineer");
+const Engineer = require("../lib/Engineer");
 
-test('creates an engineer', () => {
-    const engineer = new Engineer('Dom');
-
-    expect(engineer.name).toBe('Dom');
-})
+test("return engineer", () => {
+    const testValue = "Engineer";
+    const e = new Engineer("dom", 1,"GitHubUser");
+    expect(e.grabJob()).toBe(testValue);
+  });

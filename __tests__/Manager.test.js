@@ -1,7 +1,7 @@
-const Manager = require("./Manager");
+const Manager = require("../lib/Manager");
 
-test('creates an Manager', () => {
-    const manager = new Manager('Dom');
-
-    expect(manager.name).toBe('Dom');
-})
+test("return manager", () => {
+    const testValue = "Manager";
+    const e = new Manager("dom", 1, 1);
+    expect(e.grabJob()).toBe(testValue);
+  });
